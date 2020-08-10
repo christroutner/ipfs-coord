@@ -14,5 +14,5 @@ contains the following features:
   - Testing assertions focus on properties and structure, not values.
 
 
-#  Licence
+# Licence
 [MIT](LICENSE.md)
