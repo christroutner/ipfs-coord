@@ -25,9 +25,9 @@ describe('#util.js', () => {
 
       // Assert essential UTXOs properties exist.
       assert.isArray(bchData.utxos)
-      assert.property(bchData.utxos[0], 'txid')
-      assert.property(bchData.utxos[0], 'vout')
-      assert.property(bchData.utxos[0], 'satoshis')
+      assert.property(bchData.utxos[0], 'tx_pos')
+      assert.property(bchData.utxos[0], 'tx_hash')
+      assert.property(bchData.utxos[0], 'value')
     })
   })
 })

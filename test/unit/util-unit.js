@@ -5,12 +5,13 @@
 // npm libraries
 const chai = require('chai')
 const sinon = require('sinon')
+const cloneDeep = require('lodash.clonedeep')
 
 // Locally global variables.
 const assert = chai.assert
 
 // Mocking data libraries.
-const mockData = require('./mocks/util-mocks')
+const mockDataLib = require('./mocks/util-mocks')
 
 // Unit under test
 const UtilLib = require('../../lib/util')
@@ -18,9 +19,16 @@ const uut = new UtilLib()
 
 describe('#util.js', () => {
   let sandbox
+  let mockData
 
-  // Restore the sandbox before each test.
-  beforeEach(() => (sandbox = sinon.createSandbox()))
+  beforeEach(() => {
+    // Restore the sandbox before each test.
+    sandbox = sinon.createSandbox()
+
+    // Clone the mock data.
+    mockData = cloneDeep(mockDataLib)
+  })
+
   afterEach(() => sandbox.restore())
 
   describe('#getBchData', () => {
@@ -39,13 +47,14 @@ describe('#util.js', () => {
     it('should get BCH data on an address', async () => {
       // Mock external dependencies.
       sandbox
-        .stub(uut.bchjs.Blockbook, 'balance')
+        .stub(uut.bchjs.Electrumx, 'balance')
         .resolves(mockData.mockBalance)
-      sandbox.stub(uut.bchjs.Blockbook, 'utxo').resolves(mockData.mockUtxos)
+      sandbox.stub(uut.bchjs.Electrumx, 'utxo').resolves(mockData.mockUtxos)
 
       const addr = 'bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7'
 
       const bchData = await uut.getBchData(addr)
+      // console.log(`bchData: ${JSON.stringify(bchData, null, 2)}`)
 
       // Assert that top-level properties exist.
       assert.property(bchData, 'balance')
@@ -53,9 +62,9 @@ describe('#util.js', () => {
 
       // Assert essential UTXOs properties exist.
       assert.isArray(bchData.utxos)
-      assert.property(bchData.utxos[0], 'txid')
-      assert.property(bchData.utxos[0], 'vout')
-      assert.property(bchData.utxos[0], 'satoshis')
+      assert.property(bchData.utxos[0], 'tx_pos')
+      assert.property(bchData.utxos[0], 'tx_hash')
+      assert.property(bchData.utxos[0], 'value')
     })
   })
 })
