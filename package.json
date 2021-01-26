@@ -33,7 +33,7 @@
   },
   "repository": "christroutner/npm-lib-boilerplate",
   "dependencies": {
-    "@psf/bch-js": "^4.5.2",
+    "@psf/bch-js": "^4.6.0",
     "apidoc": "^0.25.0"
   },
   "devDependencies": {
