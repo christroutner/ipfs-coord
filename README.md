@@ -1,20 +1,33 @@
-# npm-lib-boilerplate
+# ipfs-coord
 
-This repository is a code 'boilerplate' for starting a new npm library. It
-contains the following features:
+This is a JavaScript npm library built on top of [js-ipfs](https://github.com/ipfs/js-ipfs).
+Right now this is just a prototype and a placeholder. When built, this library will help IPFS peers coordinate, discover a common interest, and then stay connected around that interest. It primarily uses IPFS pubsub channels for communication, circuit relays for censorship resistance, and Bitcoin Cash for end-to-end encryption and payments.
 
-- [Semantic Release](https://github.com/semantic-release/semantic-release) configured to work with [Travis CI](https://travis-ci.org/).
-- Automatic linting using [Standard](https://www.npmjs.com/package/standard) JavaScript.
-- Unit and integration tests using Mocha and Chai, following the best practices and design patterns in [this YouTube video](https://www.youtube.com/watch?v=lE3RYnchHps):
-  - Uses ECMAScript 2015 `Class` for business logic and utility libraries.
-  - Follows [TDD](https://builttoadapt.io/why-tdd-489fdcdda05e) best practices.
-  - Uses `_this` to maintain context to the instance of the class.
-  - Uses [Sinon stubs](https://sinonjs.org/releases/latest/stubs/) to mock external dependencies for unit tests.
-  - Each function is wrapped in try/catch statements, allowing thrown errors to 'bubble up' to the top-level function, and give every function along the way an opportunity to handle exceptions.
-  - Testing assertions focus on properties and structure, not values.
+Here are some use cases where IPFS node coordination is needed:
+- e2e encrypted chat
+- Circuit-relay as-a-service
+- Creating CoinJoin transactions
+- Decentralized exchange of currencies
+- Compute-as-a-service
+- Storage-as-a-service
 
+Here is some videos and blog posts that preceeded this work:
+- [UncensorablePublishing.com](https://uncensorablepublishing.com)
+- [Building Uncensorable REST APIs](https://youtu.be/VVc0VbOD4co)
+- [IPFS API](https://troutsblog.com/blog/ipfs-api)
+- [PS004 Collaborative CoinJoin](https://github.com/Permissionless-Software-Foundation/specifications/blob/master/ps004-collaborative-coinjoin.md)
+
+## Install
+Install the npm library:
+`npm install --save ipfs-coord`
+
+Setup a development environment:
+```
+git clone https://github.com/christroutner/ipfs-coord
+cd ipfs-coord
+npm install
+npm test
+```
 
 # Licence
 [MIT](LICENSE.md)
-
-
