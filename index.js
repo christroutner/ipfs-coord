@@ -43,6 +43,24 @@ class IpfsCoord {
     // Initialize the IPFS node and start the coordination daemon.
     _this.ipfs.initIpfs()
   }
+
+  // Returns a Promise that resolves to true once the IPFS node has been
+  // initialized and has had a chance to connect to circuit relays and
+  // coordination pubsub channels.
+  async isReady () {
+    try {
+      do {
+        await _this.util.sleep(1000)
+
+        if (this.ipfs.state.isSetup) {
+          return true
+        }
+      } while (1)
+    } catch (err) {
+      console.error('Error in isReady()')
+      throw err
+    }
+  }
 }
 
 module.exports = IpfsCoord
