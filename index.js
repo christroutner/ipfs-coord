@@ -7,19 +7,31 @@
 
 'use strict'
 
+// Public npm libraries
 const BCHJS = require('@psf/bch-js')
 
+// local libraries
 const Util = require('./lib/util')
-const util = new Util()
+const Ipfs = require('./lib/ipfs-lib')
 
 let _this // local global for 'this'.
 
 class BoilplateLib {
-  constructor () {
+  constructor (config) {
     _this = this
 
+    if (!config.ipfs) {
+      throw new Error(
+        'An instance of IPFS must be passed when instantiating the ipfs-coord library.'
+      )
+    }
+
+    // Instatiate and encapsulate support libraries.
     _this.bchjs = new BCHJS()
-    _this.util = util
+    _this.util = new Util()
+    _this.ipfs = new Ipfs(config)
+
+    _this.ipfs.getNodeInfo()
   }
 }
 
