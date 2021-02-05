@@ -26,6 +26,15 @@ class IpfsCoord {
       )
     }
 
+    // All the configuration of an optional handler for log reports. If none
+    // is specified, default to console.log.
+    if (config.logHandler) {
+      this.logger = config.logHandler
+    } else {
+      this.logger = console.log
+    }
+    config.logHandler = this.logger
+
     // Instatiate and encapsulate support libraries.
     _this.bchjs = new BCHJS()
     _this.util = new Util()
