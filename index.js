@@ -16,7 +16,7 @@ const Ipfs = require('./lib/ipfs-lib')
 
 let _this // local global for 'this'.
 
-class BoilplateLib {
+class IpfsCoord {
   constructor (config) {
     _this = this
 
@@ -31,8 +31,9 @@ class BoilplateLib {
     _this.util = new Util()
     _this.ipfs = new Ipfs(config)
 
-    _this.ipfs.getNodeInfo()
+    // Initialize the IPFS node and start the coordination daemon.
+    _this.ipfs.initIpfs()
   }
 }
 
-module.exports = BoilplateLib
+module.exports = IpfsCoord
