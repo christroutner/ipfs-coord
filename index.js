@@ -5,7 +5,7 @@
 
 /* eslint-disable no-async-promise-executor */
 
-'use strict'
+// 'use strict'
 
 // Public npm libraries
 const BCHJS = require('@psf/bch-js')
