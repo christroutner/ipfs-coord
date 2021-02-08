@@ -1,7 +1,10 @@
 # ipfs-coord
 
 This is a JavaScript npm library built on top of [js-ipfs](https://github.com/ipfs/js-ipfs).
-Right now this is just a prototype and a placeholder. When built, this library will help IPFS peers coordinate, discover a common interest, and then stay connected around that interest. It primarily uses IPFS pubsub channels for communication, circuit relays for censorship resistance, and Bitcoin Cash for end-to-end encryption and payments.
+This library will help IPFS peers coordinate, discover a common interest, and then stay connected around that interest. It primarily uses IPFS pubsub channels for communication, circuit relays for censorship resistance, and Bitcoin Cash for end-to-end encryption and payments. This library will automatically track peers, connect to them through circuit-relays, and end-to-end encrypt all communication with each node.
+
+2/7/2020:
+This library has proven out the concept, and is in the process of being refined. Tests are being written, and it's shooting for 100% test coverage, before too many new features are added.
 
 Here are some use cases where IPFS node coordination is needed:
 - e2e encrypted chat
@@ -11,7 +14,7 @@ Here are some use cases where IPFS node coordination is needed:
 - Compute-as-a-service
 - Storage-as-a-service
 
-Here is some videos and blog posts that preceeded this work:
+Here is some videos and blog posts that preceded this work:
 - [UncensorablePublishing.com](https://uncensorablepublishing.com)
 - [Building Uncensorable REST APIs](https://youtu.be/VVc0VbOD4co)
 - [IPFS API](https://troutsblog.com/blog/ipfs-api)
