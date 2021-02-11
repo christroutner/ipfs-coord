@@ -3,9 +3,17 @@
 */
 
 const ipfs = {
-  id: () => {},
+  id: () => {
+    return {
+      id: 'myID'
+    }
+  },
   swarm: {
     connect: async () => {}
+  },
+  pubsub: {
+    subscribe: async () => {},
+    publish: async () => {}
   }
 }
 
