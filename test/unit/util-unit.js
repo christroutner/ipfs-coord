@@ -3,12 +3,9 @@
 */
 
 // npm libraries
-const chai = require('chai')
+const assert = require('chai').assert
 const sinon = require('sinon')
 const cloneDeep = require('lodash.clonedeep')
-
-// Locally global variables.
-const assert = chai.assert
 
 // Mocking data libraries.
 const mockDataLib = require('./mocks/util-mocks')
