@@ -10,7 +10,6 @@ const cloneDeep = require('lodash.clonedeep')
 // local libraries
 const Peers = require('../../lib/peers')
 const CircuitRelay = require('../../lib/circuit-relay')
-// const Schema = require('../../lib/schema')
 const ipfsLib = require('./mocks/ipfs-mock')
 const mockData = require('./mocks/peers-mock')
 
