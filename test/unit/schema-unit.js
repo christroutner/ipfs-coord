@@ -10,7 +10,7 @@ const sinon = require('sinon')
 // local libraries
 const Schema = require('../../lib/schema')
 
-describe('#schema.js', () => {
+describe('#schema', () => {
   let sandbox
   let uut
 
