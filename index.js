@@ -39,9 +39,6 @@ class IpfsCoord {
     _this.bchjs = new BCHJS()
     _this.util = new Util()
     _this.ipfs = new Ipfs(config)
-
-    // Initialize the IPFS node and start the coordination daemon.
-    _this.ipfs.initIpfs()
   }
 
   // Returns a Promise that resolves to true once the IPFS node has been
@@ -52,7 +49,7 @@ class IpfsCoord {
       do {
         await _this.util.sleep(1000)
 
-        if (this.ipfs.state.isSetup) {
+        if (this.ipfs.state.isReady) {
           return true
         }
       } while (1)
