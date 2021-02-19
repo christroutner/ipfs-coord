@@ -33,7 +33,7 @@
   },
   "repository": "christroutner/ipfs-coord",
   "dependencies": {
-    "@psf/bch-js": "^4.8.1",
+    "@psf/bch-js": "^4.15.0",
     "apidoc": "^0.25.0"
   },
   "devDependencies": {
