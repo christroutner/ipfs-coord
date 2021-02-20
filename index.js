@@ -16,6 +16,7 @@ let _this // local global for 'this'.
 
 class IpfsCoord {
   constructor (config) {
+    console.log('config: ', config)
     _this = this
 
     if (!config.ipfs) {
