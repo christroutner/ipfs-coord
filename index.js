@@ -7,12 +7,10 @@
 
 // 'use strict'
 
-// Public npm libraries
-const BCHJS = require('@psf/bch-js')
-
 // local libraries
 const Util = require('./lib/util')
 const Ipfs = require('./lib/ipfs-lib')
+const BchLib = require('./lib/bch-lib')
 
 let _this // local global for 'this'.
 
@@ -26,6 +24,12 @@ class IpfsCoord {
       )
     }
 
+    if (!config.bchjs) {
+      throw new Error(
+        'An instance of @psf/bch-js must be passed when instantiating the ipfs-coord library.'
+      )
+    }
+
     // All the configuration of an optional handler for log reports. If none
     // is specified, default to console.log.
     if (config.logHandler) {
@@ -36,9 +40,9 @@ class IpfsCoord {
     config.logHandler = this.logger
 
     // Instatiate and encapsulate support libraries.
-    _this.bchjs = new BCHJS()
     _this.util = new Util()
     _this.ipfs = new Ipfs(config)
+    _this.bch = new BchLib(config)
   }
 
   // Returns a Promise that resolves to true once the IPFS node has been
