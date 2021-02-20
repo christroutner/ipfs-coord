@@ -41,8 +41,9 @@ class IpfsCoord {
 
     // Instatiate and encapsulate support libraries.
     _this.util = new Util()
-    _this.ipfs = new Ipfs(config)
     _this.bch = new BchLib(config)
+    config.bch = _this.bch
+    _this.ipfs = new Ipfs(config)
   }
 
   // Returns a Promise that resolves to true once the IPFS node has been

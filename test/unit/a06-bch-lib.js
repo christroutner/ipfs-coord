@@ -13,12 +13,13 @@ const BchLib = require('../../lib/bch-lib')
 describe('#bch-lib', () => {
   let sandbox
   let uut
+  let bchjs
 
   beforeEach(() => {
     // Restore the sandbox before each test.
     sandbox = sinon.createSandbox()
 
-    const bchjs = new BCHJS()
+    bchjs = new BCHJS()
     uut = new BchLib({ bchjs })
   })
 
@@ -50,7 +51,9 @@ describe('#bch-lib', () => {
     it('should generate same address if mnemonic is given', async () => {
       const mnemonic =
         'feature cart obtain exist impulse slab frog run smile elder crucial fatigue'
-      const result = await uut.generateBchId(mnemonic)
+
+      uut = new BchLib({ bchjs, mnemonic })
+      const result = await uut.generateBchId()
       // console.log(`result: ${JSON.stringify(result, null, 2)}`)
 
       assert.equal(
