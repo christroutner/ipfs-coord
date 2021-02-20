@@ -8,7 +8,6 @@
 // 'use strict'
 
 // local libraries
-const Util = require('./lib/util')
 const Ipfs = require('./lib/ipfs-lib')
 const BchLib = require('./lib/bch-lib')
 
@@ -40,7 +39,6 @@ class IpfsCoord {
     config.logHandler = this.logger
 
     // Instatiate and encapsulate support libraries.
-    _this.util = new Util()
     _this.bch = new BchLib(config)
     config.bch = _this.bch
     _this.ipfs = new Ipfs(config)
@@ -52,7 +50,7 @@ class IpfsCoord {
   async isReady () {
     try {
       do {
-        await _this.util.sleep(1000)
+        await _this._sleep(1000)
 
         if (this.ipfs.state.isReady) {
           return true
@@ -62,6 +60,10 @@ class IpfsCoord {
       console.error('Error in isReady()')
       throw err
     }
+  }
+
+  _sleep (ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
   }
 }
 
