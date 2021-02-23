@@ -29,6 +29,12 @@ class IpfsCoord {
       )
     }
 
+    if (!config.BCHJS) {
+      throw new Error(
+        'An Class of @psf/bch-js (BCHJS) must be passed when instantiating the ipfs-coord library.'
+      )
+    }
+
     // All the configuration of an optional handler for log reports. If none
     // is specified, default to console.log.
     if (config.logHandler) {
