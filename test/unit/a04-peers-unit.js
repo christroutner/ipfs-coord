@@ -95,18 +95,22 @@ describe('#peers', () => {
   })
 
   describe('#addPeer', () => {
-    it('should add a new peer', () => {
-      uut.addPeer(mockData.announceObj)
+    it('should add a new peer', async () => {
+      await uut.addPeer(mockData.announceObj)
+
+      // console.log(
+      //   `uut.state.peers: ${JSON.stringify(uut.state.peers, null, 2)}`
+      // )
 
       // assert.equal(true, true, 'Not throwing an error is a pass')
       assert.property(uut.state.peers, mockData.announceObj.from)
     })
 
-    it('should catch and throw errors', () => {
+    it('should catch and throw errors', async () => {
       try {
         uut.state = undefined
 
-        uut.addPeer(mockData.announceObj)
+        await uut.addPeer(mockData.announceObj)
 
         assert.fail('Unexpected code path')
       } catch (err) {

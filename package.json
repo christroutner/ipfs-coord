@@ -63,5 +63,8 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "dependencies": {
+    "bch-encrypt-lib": "^2.0.0"
   }
 }
