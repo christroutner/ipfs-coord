@@ -26,7 +26,7 @@ describe('#circuit-relay', () => {
     const crConfig = {
       ipfs,
       type: 'node.js',
-      logHandler: () => {}
+      statusLog: () => {}
     }
 
     uut = new CircuitRelay(crConfig)
@@ -39,14 +39,14 @@ describe('#circuit-relay', () => {
       const crConfig = {
         ipfs,
         type: 'node.js',
-        logger: () => {}
+        statusLog: () => {}
       }
 
       uut = new CircuitRelay(crConfig)
 
       assert.property(uut, 'state')
       assert.property(uut, 'ipfs')
-      assert.property(uut, 'logger')
+      assert.property(uut, 'statusLog')
     })
 
     it('should throw an error if config object is not specified', () => {

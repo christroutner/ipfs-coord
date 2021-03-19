@@ -27,7 +27,7 @@ describe('#peers', () => {
     const peerConfig = {
       ipfs,
       type: 'node.js',
-      logHandler: () => {}
+      statusLog: () => {}
     }
     const cr = new CircuitRelay(peerConfig)
 
@@ -42,7 +42,7 @@ describe('#peers', () => {
       const peerConfig = {
         ipfs,
         type: 'node.js',
-        logHandler: () => {}
+        statusLog: () => {}
       }
       const cr = new CircuitRelay(peerConfig)
 
