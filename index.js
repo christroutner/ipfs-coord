@@ -29,16 +29,25 @@ class IpfsCoord {
       )
     }
 
-    // All the configuration of an optional handler for log reports. If none
+    // Configuration of an optional 'status' log handler for log reports. If none
     // is specified, default to console.log.
     if (config.statusLog) {
       this.statusLog = config.statusLog
     } else {
       this.statusLog = console.log
     }
-
     // If the statusLog handler wasn't specified, then define it.
     config.statusLog = this.statusLog
+
+    // Configuration of an optional 'private' log handler for recieving e2e
+    // encrypted message. If none is specified, default to console.log.
+    if (config.privateLog) {
+      this.privateLog = config.privateLog
+    } else {
+      this.privateLog = console.log
+    }
+    // If the privateLog handler wasn't specified, then define it.
+    config.privateLog = this.privateLog
 
     // Instatiate and encapsulate support libraries.
     _this.bch = new BchLib(config)
