@@ -29,7 +29,7 @@ describe('#pubsub', () => {
     const config = {
       ipfs,
       type: 'node.js',
-      logHandler: () => {}
+      statusLog: () => {}
     }
     config.cr = new CircuitRelay(config)
     config.peers = new Peers(config)
