@@ -6,12 +6,6 @@
 
 const BOOTSTRAP_BROWSER_CRs = [
   {
-    name: 'wss.fullstack.cash',
-    multiaddr:
-      '/dns4/wss.fullstack.cash/tcp/443/wss/ipfs/QmNZktxkfScScnHCFSGKELH3YRqdxHQ3Le9rAoRLhZ6vgL',
-    connected: false
-  },
-  {
     name: 'ipfs-cr-wss.fullstack.nl',
     multiaddr:
       '/dns4/ipfs-cr-wss.fullstackcash.nl/tcp/443/wss/ipfs/QmRrUu64cAnPntYiUc7xMunLKZgj1XZT5HmqJNtDMqQcD7',
