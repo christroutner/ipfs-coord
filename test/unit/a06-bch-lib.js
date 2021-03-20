@@ -85,4 +85,32 @@ describe('#bch-lib', () => {
       }
     })
   })
+
+  describe('#generatePrivateKey', () => {
+    it('should generate a private key', async () => {
+      const result = await uut.generatePrivateKey()
+      console.log('result: ', result)
+
+      // The private key shoul be a string.
+      assert.isString(result)
+
+      // It shoul be a WIF that starts with a K or L
+      // assert.equal(result[0], 'K' || 'L')
+    })
+
+    it('should catch and throw an error', async () => {
+      try {
+        sandbox
+          .stub(uut.bchjs.Mnemonic, 'generate')
+          .throws(new Error('test error'))
+
+        await uut.generatePrivateKey()
+
+        assert.fail('Unexpected code path. Error was expected to be thrown.')
+      } catch (err) {
+        // console.log(err)
+        assert.include(err.message, 'test error')
+      }
+    })
+  })
 })
