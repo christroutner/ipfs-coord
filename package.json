@@ -66,6 +66,7 @@
     }
   },
   "dependencies": {
-    "bch-encrypt-lib": "^2.0.0"
+    "bch-encrypt-lib": "^2.0.0",
+    "orbit-db": "^0.26.1"
   }
 }
