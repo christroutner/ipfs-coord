@@ -10,7 +10,8 @@
     "lint": "standard --env mocha --fix",
     "docs": "./node_modules/.bin/apidoc -i src/ -o docs",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coverage:report": "nyc --reporter=html mocha test/unit/ --exit"
+    "coverage:report": "nyc --reporter=html mocha test/unit/ --exit",
+    "test:temp": "npm run lint && TEST=unit nyc mocha -g '#refreshPeerConnections' test/unit/"
   },
   "keywords": [
     "bitcoin",

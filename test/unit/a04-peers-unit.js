@@ -123,7 +123,7 @@ describe('#peers', () => {
   describe('#refreshPeerConnections', () => {
     it('should refresh peer connections', async () => {
       // Add a peer
-      uut.addPeer(mockData.announceObj)
+      await uut.addPeer(mockData.announceObj)
 
       // Connect to that peer.
       await uut.refreshPeerConnections()
@@ -144,7 +144,7 @@ describe('#peers', () => {
 
     it("should exit quietly if peers can't connect", async () => {
       // Add a peer
-      uut.addPeer(mockData.announceObj)
+      await uut.addPeer(mockData.announceObj)
 
       // Force an error
       sandbox.stub(uut.ipfs.swarm, 'connect').rejects(new Error('test error'))
