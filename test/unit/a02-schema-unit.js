@@ -44,6 +44,7 @@ describe('#schema', () => {
       assert.property(result, 'isCircuitRelay')
       assert.property(result, 'cryptoAddresses')
       assert.property(result, 'encryptPubKey')
+      assert.property(result, 'orbitdb')
 
       // Assert that properties have the expected type.
       assert.isArray(result.ipfsMultiaddrs)
@@ -54,6 +55,18 @@ describe('#schema', () => {
       assert.equal(result.isCircuitRelay, false)
       assert.equal(result.apiName, 'ipfs-coord-announce')
       assert.equal(result.type, 'node.js')
+    })
+
+    it('should update orbitdbId in state when different', () => {
+      const announceObj = {
+        orbitdbId: '567'
+      }
+
+      const result = uut.announcement(announceObj)
+      console.log(`result: ${JSON.stringify(result, null, 2)}`)
+
+      assert.property(result, 'orbitdb')
+      assert.equal(result.orbitdb, '567')
     })
   })
 
