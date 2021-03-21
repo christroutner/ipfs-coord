@@ -10,6 +10,7 @@ const cloneDeep = require('lodash.clonedeep')
 // local libraries
 const Peers = require('../../lib/peers')
 const CircuitRelay = require('../../lib/circuit-relay')
+const OrbitDB = require('../../lib/orbitdb')
 const ipfsLib = require('./mocks/ipfs-mock')
 const mockData = require('./mocks/peers-mock')
 
@@ -30,8 +31,13 @@ describe('#peers', () => {
       statusLog: () => {}
     }
     const cr = new CircuitRelay(peerConfig)
-
     peerConfig.cr = cr
+
+    const orbitdbConfig = {
+      privateLog: () => {}
+    }
+    peerConfig.orbitdb = new OrbitDB(orbitdbConfig)
+
     uut = new Peers(peerConfig)
   })
 
@@ -96,6 +102,9 @@ describe('#peers', () => {
 
   describe('#addPeer', () => {
     it('should add a new peer', async () => {
+      // Mock the response from orbitdb.
+      sandbox.stub(uut.orbitdb, 'connectToPeerDb').resolves({})
+
       await uut.addPeer(mockData.announceObj)
 
       // console.log(
@@ -122,6 +131,9 @@ describe('#peers', () => {
 
   describe('#refreshPeerConnections', () => {
     it('should refresh peer connections', async () => {
+      // Mock the response from orbitdb.
+      sandbox.stub(uut.orbitdb, 'connectToPeerDb').resolves({})
+
       // Add a peer
       await uut.addPeer(mockData.announceObj)
 
@@ -143,6 +155,9 @@ describe('#peers', () => {
     })
 
     it("should exit quietly if peers can't connect", async () => {
+      // Mock the response from orbitdb.
+      sandbox.stub(uut.orbitdb, 'connectToPeerDb').resolves({})
+
       // Add a peer
       await uut.addPeer(mockData.announceObj)
 
