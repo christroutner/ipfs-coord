@@ -29,7 +29,7 @@ describe('#schema', () => {
   afterEach(() => sandbox.restore())
 
   describe('#announcement', () => {
-    it('should return an annoument object', () => {
+    it('should return an announcement object', () => {
       const result = uut.announcement()
       // console.log(`result: ${JSON.stringify(result, null, 2)}`)
 
