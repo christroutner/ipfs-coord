@@ -10,26 +10,6 @@ const BOOTSTRAP_BROWSER_CRs = [
     multiaddr:
       '/dns4/ipfs-cr-wss.fullstackcash.nl/tcp/443/wss/ipfs/QmRrUu64cAnPntYiUc7xMunLKZgj1XZT5HmqJNtDMqQcD7',
     connected: false
-  },
-  {
-    name: 'node0.preload.ipfs.io',
-    multiaddr: '/dns4/node0.preload.ipfs.io/tcp/443/wss/p2p/QmZMxNdpMkewiVZLMRxaNxUeZpDUb34pWjZ1kZvsd16Zic',
-    connected: false
-  },
-  {
-    name: 'node1.preload.ipfs.io',
-    multiaddr: '/dns4/node1.preload.ipfs.io/tcp/443/wss/p2p/Qmbut9Ywz9YEDrz8ySBSgWyJk41Uvm2QJPhwDJzJyGFsD6',
-    connected: false
-  },
-  {
-    name: 'node2.preload.ipfs.io',
-    multiaddr: '/dns4/node2.preload.ipfs.io/tcp/443/wss/p2p/QmV7gnbW5VTcJ3oyM2Xk1rdFBJ3kTkvxc87UFGsun29STS',
-    connected: false
-  },
-  {
-    name: 'node3.preload.ipfs.io',
-    multiaddr: '/dns4/node3.preload.ipfs.io/tcp/443/wss/p2p/QmY7JB6MQXhxHvq7dBDh4HpbH29v4yE9JRadAVpndvzySN',
-    connected: false
   }
 ]
 
