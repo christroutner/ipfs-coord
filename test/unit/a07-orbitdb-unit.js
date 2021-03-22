@@ -136,6 +136,37 @@ describe('#orbitdb', () => {
     })
   })
 
+  describe('#_checkIfAlreadyProcessed', () => {
+    it('should return false for a new message', () => {
+      const hash = 'abc'
+
+      const result = uut._checkIfAlreadyProcessed(hash)
+
+      assert.equal(result, false)
+    })
+
+    it('should return true for duplicate hash', () => {
+      const hash = 'abc'
+
+      uut._checkIfAlreadyProcessed(hash)
+
+      const result = uut._checkIfAlreadyProcessed(hash)
+
+      assert.equal(result, true)
+    })
+
+    it('should remove old entries as new entries are processed', () => {
+      // Force cache to only be 2 elements.
+      uut.MSG_CACHE_SIZE = 2
+
+      uut._checkIfAlreadyProcessed('abc')
+      uut._checkIfAlreadyProcessed('def')
+      uut._checkIfAlreadyProcessed('geh')
+
+      assert.equal(uut.msgCache.includes('abc'), false)
+    })
+  })
+
   describe('#handleReplicationEvent', () => {
     it('should decrypt an incoming message an pass it to the private log', async () => {
       // Mock dependencies
@@ -144,6 +175,7 @@ describe('#orbitdb', () => {
       }
       sandbox.stub(uut.encrypt, 'decryptMsg').resolves('decrypted message')
 
+      // Mock the database.
       uut.db = mockData.mockEventLog
       // console.log('uut.db: ', uut.db)
 
